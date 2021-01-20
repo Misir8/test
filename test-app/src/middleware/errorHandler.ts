@@ -6,7 +6,7 @@ function errorMiddleware(error: HttpException, request: Request, response: Respo
     const message = error.message || 'Something went wrong';
 
     if(error instanceof multer.MulterError){
-        response.status(404).send({status: 404, message});
+        response.status(400).send({status: 400, message});
     }else{
     response
         .status(500)
