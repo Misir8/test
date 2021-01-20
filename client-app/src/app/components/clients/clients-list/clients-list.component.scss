@@ -1,0 +1,23 @@
+table{
+  width: 100%;
+}
+
+th{
+  font-size: 16px;
+  text-align: center !important;
+  border: 1px solid #e7e4e4;
+  vertical-align: center;
+}
+td{
+  border: 1px solid #e7e4e4;
+  padding: 5px;
+  text-align: center;
+  vertical-align: center;
+}
+
+mat-form-field{
+  width: 80%;
+}
+::ng-deep .mat-form-field-wrapper{
+  padding: 0  !important;
+}

@@ -1,0 +1,6 @@
+<ng-container *ngIf="client">
+  <p>{{client.firstName | titlecase}} - {{client.lastName | titlecase}}</p>
+  <div *ngFor="let image of client.clientImage">
+    <img [src]="url + img + image.filename" [alt]="image.originalName" width="150px">
+  </div>
+</ng-container>

@@ -1,0 +1,121 @@
+<form [formGroup]="form">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> № </th>
+      <td mat-cell *matCellDef="let element;let i = index"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Firstname Column -->
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Firstname </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- Lastname Column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Lastname </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Birth Date Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthDate | date}} </td>
+    </ng-container>
+
+    <!-- Registration Date Column -->
+    <ng-container matColumnDef="registrationDate">
+      <th mat-header-cell *matHeaderCellDef> Registration Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.registrationDate | date}} </td>
+    </ng-container>
+
+    <!-- Ip Address Column -->
+    <ng-container matColumnDef="ipAddress">
+      <th mat-header-cell *matHeaderCellDef> Ip Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.ipAddress}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status[0]}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element">
+        <div>
+          <button mat-raised-button color="primary" (click)="openClientDetails(element.id)">View</button>
+          <button mat-raised-button color="primary" (click)="openClientFiles(element.id)">View Files</button>
+          <button mat-raised-button color="accent">Upload File</button>
+        </div>
+      </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="header-row-1-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef
+          [attr.colspan]="1">
+      </th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-2-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Name search</mat-label>
+          <input formControlName="name" (keyup)="nameSearch()" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-3-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1"></th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-4-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Email search</mat-label>
+          <input formControlName="email" (keyup)="nameSearch()"  matInput placeholder="Placeholder">
+        </mat-form-field>
+      </th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-5-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Birth Date search</mat-label>
+          <input formControlName="birthDate" (keyup)="nameSearch()"  matInput placeholder="Placeholder">
+        </mat-form-field>
+      </th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-6-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1"></th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-7-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1"></th>
+    </ng-container>
+    <ng-container matColumnDef="header-row-8-group">
+      <th class="heading" mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Status search</mat-label>
+          <input formControlName="status" (keyup)="nameSearch()"  matInput placeholder="Placeholder">
+        </mat-form-field>
+      </th>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row
+        *matHeaderRowDef="['header-row-1-group', 'header-row-2-group','header-row-3-group', 'header-row-4-group', 'header-row-5-group',
+       'header-row-6-group', 'header-row-7-group', 'header-row-8-group']"></tr>
+
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</form>
