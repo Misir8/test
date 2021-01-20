@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import {Request, response, Response} from "express";
 import {getRepository} from "typeorm";
 import {Client, ClientStatus} from "../models/Client";
 import {validationResult} from 'express-validator';
@@ -43,4 +43,20 @@ export const createClient = async ( req: Request, res: Response): Promise<any> =
         .catch((err) => res.status(500).send(err.message));
 }
 
+export const getClientWithStatusClient = async ( req: Request, res: Response): Promise<any> => {
+    const clients =  await getRepository(Client).find({where: {status: ClientStatus.CLIENT} });
+    return res.send(clients);
+}
+
+export const patchStatus = async ( req: Request, res: Response): Promise<any> =>{
+    const {id} = req.params;
+    const clientRepo = await getRepository(Client);
+    const client = await clientRepo.findOne(id);
+    if(!client){
+        return res.status(404).send(`Client with id ${id} not found`)
+    }
+    client.status = req.body.status;
+    await clientRepo.save(client);
+    return res.send(client);
+}
 

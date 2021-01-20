@@ -5,6 +5,7 @@ import {ISearchParams} from '../../../shared/models/SearchParams';
 import {MatDialog} from '@angular/material/dialog';
 import {ClientDetailsComponent} from '../client-details/client-details.component';
 import {ClientFilesComponent} from '../client-files/client-files.component';
+import {ClientFileUploadComponent} from '../client-file-upload/client-file-upload.component';
 
 export interface PeriodicElement {
   name: string;
@@ -63,6 +64,12 @@ export class ClientsListComponent implements OnInit {
   }
   openClientFiles(id: number) {
     this.dialog.open(ClientFilesComponent, {
+      data: id,
+      minWidth: '40vw',
+    });
+  }
+  openUploadFile(id: number) {
+    this.dialog.open(ClientFileUploadComponent, {
       data: id,
       minWidth: '40vw',
     });

@@ -6,6 +6,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import {ClientFilesComponent} from './client-files/client-files.component';
+import {ClientFileUploadComponent} from './client-file-upload/client-file-upload.component';
 
 
 
@@ -13,7 +14,8 @@ import {ClientFilesComponent} from './client-files/client-files.component';
   declarations: [
     ClientsListComponent,
     ClientDetailsComponent,
-    ClientFilesComponent
+    ClientFilesComponent,
+    ClientFileUploadComponent
   ],
   imports: [
     CommonModule,

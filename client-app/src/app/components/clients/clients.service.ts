@@ -38,7 +38,13 @@ export class ClientsService {
   getClientById(id: number): Observable<IClient>{
     return this.http.get<IClient>(this.url + 'clients/' + id)
   }
+
   getClientFiles(id: number): Observable<IClient>{
     return this.http.get<IClient>(this.url + 'clientFiles/' + id)
   }
+
+  uploadClientFile(id: number, value: any): Observable<any>{
+    return this.http.post(this.url + 'clientFiles/' + id, value);
+  }
+
 }

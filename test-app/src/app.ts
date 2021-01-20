@@ -4,6 +4,17 @@ import {createConnection} from "typeorm";
 import router from './routes/index.route';
 import errorMiddleware from "./middleware/errorHandler";
 import cors from 'cors';
+import mysqldump from 'mysqldump';
+
+mysqldump({
+    connection: {
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'clientDb',
+    },
+    dumpToFile: './dump.sql',
+});
 
 createConnection().then(async connection => {
     console.log('successfully connect with db');
